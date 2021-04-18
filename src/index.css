@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.centerItem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color{
+  color:  #fb9e00;
+}
+.bgColor{
+  background-color: #fb9e00;
+}
+.orangeColor{
+  color: #e25a44;
+}
+
+.bgOrange{
+  background-color: #e25a44;
+}
