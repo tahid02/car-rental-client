@@ -1,4 +1,4 @@
-import { faAddressBook, faAddressCard, faCertificate } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FooterCard from "./FooterCard";
 
@@ -25,7 +25,7 @@ const Footer = () => {
     
     
     return (
-        <footer className="container bg-dark">
+        <footer className=" bg-dark">
             <div className="row my-5">
 
                 {/* first three columns */}
@@ -41,9 +41,9 @@ const Footer = () => {
                         <h6 className="cyan">Address </h6>
                         <small className="place">Naw York City, Birk Shiree street ,Road 102</small>
                         <div className="icons  fs-4 mt-4">
-                            <FontAwesomeIcon icon={faCertificate} />
-                            <FontAwesomeIcon icon={faAddressCard} className='mx-3' />
-                            <FontAwesomeIcon icon={faAddressBook} />
+                            <FontAwesomeIcon icon={faFacebook} className='text-white'/>
+                            <FontAwesomeIcon icon={faYoutube} className='mx-3 text-white' />
+                            <FontAwesomeIcon icon={faTwitter} className='text-white'/>
                         </div>
 
                     </div>

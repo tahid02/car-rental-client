@@ -1,4 +1,6 @@
 
+import {  faRoad, faTasks, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import happyCustomer from '../../../images/customer-giving-quality-feedback.jpg'
 import sedan from '../../../images/sedan-car-model.png'
 
@@ -24,17 +26,17 @@ const WhyUs = () => {
 
                     <div className="infos text-center d-flex justify-content-around flex-wrap">
                         <div className=''>
-                            icon <br/>
+                            <FontAwesomeIcon  icon={faUsers}/> <br/>
                             5000+ <br/> customers
                         </div>
                         <div className=''>
                       
-                        icon <br/>
+                        <FontAwesomeIcon  icon={faTasks}/> <br/>
                             3000+ <br/> Services
                         </div>
                         <div className=''>
                        
-                        icon <br/>
+                        <FontAwesomeIcon  icon={faRoad}/> <br/>
                             safety <br/> first
                         </div>
                         
