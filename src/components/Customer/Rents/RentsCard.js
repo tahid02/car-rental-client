@@ -3,9 +3,8 @@ const center_item = {
     alignItems:'center'
 }
 const RentsCard = ({serviceInfo,orderTime}) => {
-    const { type,price,description,imageURL} = serviceInfo
-    console.log(serviceInfo,orderTime)
     
+    const {imageURL,price,type} = serviceInfo;
     return (
         <div className='container'>
             <div className="row shadow my-3">
@@ -15,7 +14,7 @@ const RentsCard = ({serviceInfo,orderTime}) => {
                     }
                 </div>
                 <div className="col d-flex align-items-center" > <strong> {type} </strong> </div>
-                <div className="col d-flex align-items-center">  ${price}/Day </div>
+                <div className="col d-flex align-items-center">  ${price} </div>
                 <div className="col d-flex align-items-center"> {orderTime} </div>
             </div>
                

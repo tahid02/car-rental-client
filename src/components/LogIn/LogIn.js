@@ -38,8 +38,9 @@ const LogIn = () => {
                 const token = credential.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                const { displayName, email } = user
-                const signedInUser = { name: displayName, email }
+                console.log('logged in user ' , user )
+                const { displayName, email, photoURL } = user
+                const signedInUser = { name: displayName, email , photoURL}
                 setLoggedInUser(signedInUser)
                 history.replace(from);
                 console.log(signedInUser)

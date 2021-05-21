@@ -13,27 +13,51 @@ import AddServices from './components/AdminPanel/AddServices/AddServices';
 import AddAdmin from './components/AdminPanel/AddAdmin/AddAdmin';
 import Payment from './components/Customer/Payment/Payment';
 import Rents from './components/Customer/Rents/Rents';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import LogIn from './components/LogIn/LogIn';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Reviews from './components/Customer/Reviews/Reviews'
 import ManageServices from './components/AdminPanel/ManageServices/ManageServices';
+import EditServices from './components/AdminPanel/ManageServices/EditServices';
+import Profile from './components/Profile/Profile';
 
 export const  UserContext = createContext()
 
 function App() {
 
 
-  const [loggedInUser,setLoggedInUser] = useState({})
+  const [loggedInUser,setLoggedInUser] = useState({success: false} )
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [editService,setEditService] = useState({});
+  const [serviceInfo, setServiceInfo] = useState({});
+
+  useEffect(() => {
+    fetch('https://evening-ocean-71187.herokuapp.com/isAdmin', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: loggedInUser.email })
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+           setIsAdmin(data);
+        });
+}, [loggedInUser?.email])
+
+
   return (
-    <UserContext.Provider value={ [loggedInUser,setLoggedInUser] }>
+    <UserContext.Provider value={ [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo] }>
     <Router>
-      <Navbar name={loggedInUser.name}/>
+      <Navbar />
 
       <Switch>
 
-        <PrivateRoute path="/admin/rentList">
-         <AllRents />
+      <PrivateRoute path="/payment/:id">
+          <Payment />
+        </PrivateRoute>
+
+        <PrivateRoute path="/admin/rentList" >
+         <AllRents/>
         </PrivateRoute>
         
         <PrivateRoute path="/admin/addService">
@@ -47,19 +71,29 @@ function App() {
         <PrivateRoute path="/admin/manageServices">
           <ManageServices />
         </PrivateRoute>
+        <PrivateRoute path="/admin/editService">
+          <EditServices />
+        </PrivateRoute>
 
         <PrivateRoute path="/customer/rents">
           <Rents />
+        </PrivateRoute>
+        <PrivateRoute path="/customer/payment">
+          <Payment />
         </PrivateRoute>
 
         <PrivateRoute path="/customer/reviews">
           <Reviews />
         </PrivateRoute>
 
-        
-        <PrivateRoute path="/payment/:id">
-          <Payment />
+        <PrivateRoute path="/user/profile">
+          <Profile />
         </PrivateRoute>
+
+
+
+        
+        
 
         <Route path="/login">
           <LogIn />

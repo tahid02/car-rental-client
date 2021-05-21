@@ -1,3 +1,9 @@
+import axios from "axios";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../../App";
+
 const center_item = {
     display:'flex',
     alignItems:'center'
@@ -6,8 +12,12 @@ const center_item = {
    
 
     
-    const ManageServicesCard = ({service}) => {
+const ManageServicesCard = ({service}) => {
+    const [loggedInUser,setLoggedInUser,isAdmin,editService,setEditService] = useContext(UserContext)
         const { imageURL, type, price, description,_id } = service;
+
+
+
 
         const deleteProduct = (e, id) => {
             console.log(e.target.parentNode.parentNode, _id,type, price, imageURL)
@@ -23,22 +33,34 @@ const center_item = {
                 }
             })
         }
+        const editProduct = () => {
+            setEditService(service)
+        }
+
+        
+
+        
         return (
     
     
-    
+    <>
     
             <tr className=''>
                 {/* <th scope="row">1</th> */}
                 <td> {type}</td>
                 <td>{price}</td>
                 <td>
-                    <button className="btn btn-success">edit</button>
+                    <Link to="/admin/editService">
+                        <button className="btn btn-success" onClick={editProduct} >edit</button>
+                    </Link>
+                    
                     <button className="btn btn-danger" onClick={(e) =>deleteProduct( e, _id)}>delete</button>
                 </td>
             </tr>
+
+            
     
-    
+    </>
     
         );
     };

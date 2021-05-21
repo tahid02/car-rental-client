@@ -7,13 +7,13 @@ import './payment.css'
 import { useParams } from 'react-router';
 import Sidebar from '../../Shared/Sidebar/Sidebar';
 import { UserContext } from '../../../App';
+import CustomerSidebar from '../../Shared/Sidebar/CustomerSidebar';
 
 const Payment = () => {
-  const [loggedInUser,setLoggedInUser] = useContext(UserContext)
- 
+  const [loggedInUser, setLoggedInUser, isAdmin,setIsAdmin, editService, setEditService,serviceInfo, setServiceInfo ] = useContext(UserContext)
+
   const { id } = useParams()
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const [serviceInfo, setServiceInfo] = useState([])
   // const loggedInUser = {
   //   name: 'tanzim',
   //   email: 'tanzim1463@gamil.com'
@@ -24,10 +24,10 @@ const Payment = () => {
     fetch(`https://evening-ocean-71187.herokuapp.com/checkOut/${id}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
-        setServiceInfo(data)
+        console.log('service  data ', data)
+        setServiceInfo(data);
       })
-  }, [])
+  }, [ ])
 
 
 
@@ -38,6 +38,7 @@ const Payment = () => {
 
 
   const onSubmit = data => {
+    console.log('user payment data', data)
     setPaymentData(data)
   };
 
@@ -56,26 +57,14 @@ const Payment = () => {
 
       const url = `https://evening-ocean-71187.herokuapp.com/addRent`
       fetch(url, {
-          method: 'POST',
-          headers: {
-              'content-type': 'application/json'
-          },
-          body: JSON.stringify(orderDetails)
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(orderDetails)
       })
-          .then(res => console.log('server side response', res))
-          .catch(err => console.log(err))
-
-
-
-
-
-
-
-
-
-
-
-
+        .then(res => console.log('server side response', res))
+        .catch(err => console.log(err))
 
 
 
@@ -105,29 +94,44 @@ const Payment = () => {
       <div className='col-md-4'>
         <Sidebar />
       </div>
-      <div className="col-md-4 " >
-        <h4> Car Type: {serviceInfo.type}</h4>
-        <p> cost: ${serviceInfo.price}/Day </p>
-        <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
-          <input defaultValue={loggedInUser.name} {...register("name", { required: true })} placeholder="Your Name" />
-          {errors.name && <span className="error">Name is required</span>}
 
-          <input defaultValue={loggedInUser.email} {...register("email", { required: true })} placeholder="Your Email" />
-          {errors.email && <span className="error">Email is required</span>}
 
-          <input {...register("address", { required: true })} placeholder="Your Address" />
-          {errors.address && <span className="error">Address is required</span>}
 
-          <input {...register("phone", { required: true })} placeholder="Your Phone Number" />
-          {errors.phone && <span className="error">Phone Number is required</span>}
+      <div className="col-md-8 " >
+        <div className="">
+          <img src={serviceInfo.imageURL} alt="" />
+          <h4> Car Type: {serviceInfo.type}</h4>
+          <p> cost: ${serviceInfo.price}/Day </p>
+        </div>
 
-          <input type="submit" value='save' />
-        </form>
-      </div>
-      <div className="col-md-4" >
+        <div className="row">
 
-        <h2>Pay Here   </h2>
-        <ProcessPayment handlePayment={handlePaymentSuccess} />
+          <div className="col-md-6" >
+            <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
+              <input defaultValue={loggedInUser.name} {...register("name", { required: true })} placeholder="Your Name" />
+              {errors.name && <span className="error">Name is required</span>}
+
+              <input defaultValue={loggedInUser.email} {...register("email", { required: true })} placeholder="Your Email" />
+              {errors.email && <span className="error">Email is required</span>}
+
+              <input {...register("address", { required: true })} placeholder="Your Address" />
+              {errors.address && <span className="error">Address is required</span>}
+
+              <input {...register("phone", { required: true })} placeholder="Your Phone Number" />
+              {errors.phone && <span className="error">Phone Number is required</span>}
+
+              <input type="submit" value='save' />
+            </form>
+          </div>
+
+
+          <div className="col-md-6" >
+            <h2>Pay Here   </h2>
+            <ProcessPayment handlePayment={handlePaymentSuccess} />
+          </div>
+
+        </div>
+
       </div>
     </div>
   );

@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import './Navbar.css'
 
+import { useContext } from "react";
+import { UserContext } from "../../../App";
 
 
+const Navbar = () => {
 
-const Navbar = ({name}) => {
+        const [loggedInUser, setLoggedInUser,isAdmin ] = useContext(UserContext);
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid navContainer">
@@ -21,17 +25,20 @@ const Navbar = ({name}) => {
                         <Link  to="/" className="nav-link active" >Home </Link>
                         </li>
                         <li className="nav-item">
-                        <Link  to="/" className="nav-link active" >Our Portfolio</Link>
+                        <Link  to="/" className="nav-link active" >Services</Link>
                         </li>
                         <li className="nav-item">
-                            <Link  to="/" className="nav-link active" >Our teams</Link>
+                            <Link  to="/" className="nav-link active" >Testimonial</Link>
                         </li>
                         <li className="nav-item">
                         <Link  to="/" className="nav-link active" >contact us</Link>
                         </li>
+                        { isAdmin && <li className="nav-item">
+                        <Link  to="/admin/rentList"  className="nav-link active" > Admin </Link>
+                        </li>}
                         <li className="nav-item">
                            <Link to='/login'> <button className="nav-link btn btn-success active">Log in</button></Link>
-                           {name && <span> {name} </span>}
+                           {loggedInUser.name && <span> {loggedInUser.name} </span>}
                         </li>
                         
                     </ul>

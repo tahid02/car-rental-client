@@ -5,15 +5,16 @@ const Banner = () => {
     return (
         // <section className='banner'>
 
-        // testing bare and mmirror
-        //testing mirror
+        
             <section  className=""> 
             {/* <section  className="container-fluid">  */}
-            <div className="row container-fluid">
-                <div className="col-md-5 col-sm-12 col-12">
+            <div className="row container-fluid centerItem">
+                <div className="col-md-5 col-sm-12 col-12 centerItem">
+                    <div>
                     <h1>NEED A <span className='color'>CAR? </span>  </h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat expedita cum ut animi accusamus recusandae voluptatem et nesciunt temporibus omnis.</p>
                     <button className="btn bgColor btn-warning "> Pick Car  </button>
+                    </div>
                 </div>
                 <div className="col-md-7 col-sm-12 col-12">
                     <img src={bannerImage} alt="" className='w-100' />

@@ -8,7 +8,7 @@ import RentsCard from './RentsCard';
 
 const Rents = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser] = useContext(UserContext)
 
 
     const [userRents, setUserRents] = useState([])
@@ -19,7 +19,7 @@ const Rents = () => {
         fetch(`https://evening-ocean-71187.herokuapp.com/userRents?email=${loggedInUser.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                console.log('user rented data ',data)
                 setUserRents(data)
             })
     }, [])
