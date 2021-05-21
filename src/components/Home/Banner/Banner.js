@@ -11,7 +11,7 @@ const Banner = () => {
             <div className="row container-fluid centerItem">
                 <div className="col-md-5 col-sm-12 col-12 centerItem">
                     <div>
-                    <h1>NEED A <span className='color'>CAR? </span>  </h1>
+                    <h1>You NEED A <span className='color'>CAR? </span>  </h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat expedita cum ut animi accusamus recusandae voluptatem et nesciunt temporibus omnis.</p>
                     <button className="btn bgColor btn-warning "> Pick Car  </button>
                     </div>
