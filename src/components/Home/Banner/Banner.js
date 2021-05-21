@@ -5,7 +5,8 @@ const Banner = () => {
     return (
         // <section className='banner'>
 
-        
+        // testing bare and mmirror
+        //testing mirror
             <section  className=""> 
             {/* <section  className="container-fluid">  */}
             <div className="row container-fluid">
