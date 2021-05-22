@@ -13,6 +13,7 @@ const EditServices = () => {
 
 
     const handleEditedImageUpload = event => {
+        event.preventDefault();
         console.log('btn clicked ')
         console.log(event.target.files[0])
         const imageData = new FormData();
@@ -33,32 +34,32 @@ const EditServices = () => {
     }
 
 
-    const onSubmit = (data,event) => {
+    const onSubmit = (data) => {
         
-        event.preventDefault();
+        
         console.log(data)
-        const serviceData = {
+        // const serviceData = {
 
-            type: data.type,
-            price: data.price,
-            description: data.description,
-            imageURL: editImageURL
-        };
-        console.log('service Data', serviceData)
+        //     type: data.type,
+        //     price: data.price,
+        //     description: data.description,
+        //     imageURL: editImageURL
+        // };
+        // console.log('service Data', serviceData)
 
-        fetch(`/update/${_id}`,{
-            method:'PATCH',
-            headers: {'Content-Type': 'application/json'},
-            body:JSON.stringify(serviceData)
-        })
-        .then(res => res.json())
-        .then( result => {
-            // console.log('updated');
-            if (result) {
-                console.log('updated successfully')
+        // fetch(`/update/${_id}`,{
+        //     method:'PATCH',
+        //     headers: {'Content-Type': 'application/json'},
+        //     body:JSON.stringify(serviceData)
+        // })
+        // .then(res => res.json())
+        // .then( result => {
+        //     // console.log('updated');
+        //     if (result) {
+        //         console.log('updated successfully')
             
-            }
-        })
+        //     }
+        // })
     };
 
 
@@ -71,23 +72,19 @@ const EditServices = () => {
                 </div>
                 <div className="col-md-4">
                     <img src={editImageURL} alt="service" className='w-25'/>
-                <form className="pay-form" onSubmit={() => handleSubmit(onSubmit)}>
-                        <label htmlFor=""> service name</label>
-                        <input  {...register("editType", { required: true })}  defaultValue={type} />
-                        {errors.editType && <span className="error">service type is required</span>}
+                    <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
+                        <input  {...register("type", { required: true })} placeholder="service Name" />
+                        {errors.type && <span className="error">service type is required</span>}
 
-                        <label htmlFor="">price</label>
-                        <input type='number' {...register("editPrice", { required: true })} defaultValue={price} />
-                        {errors.editPrice && <span className="error">price is required</span>}
-                        
-                        <label htmlFor="">description</label>
-                        <input {...register("editDescription", { required: true })} defaultValue={description} />
-                        {errors.editDescription && <span className="error">description is required</span>}
+                        <input type='number' {...register("price", { required: true })} placeholder="service price" />
+                        {errors.price && <span className="error">price is required</span>}
 
-                        <label htmlFor="">service image </label>
-                         <input type="file" onChange={event => handleEditedImageUpload(event)} name="image" required/> 
+                        <input {...register("description", { required: true })} placeholder="service description" />
+                        {errors.description && <span className="error">description is required</span>}
 
-                        <button type="submit">save edit </button>
+                        <input type="file" onChange={event => handleEditedImageUpload(event)} name="image" required/>
+
+                        <input type="submit" value='Edit' />
                     </form>
                     
                     
