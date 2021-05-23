@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
+import Fade from 'react-reveal/Fade';
 
 const Reviews = () => {
 
@@ -62,7 +63,11 @@ const Reviews = () => {
                 <div className="col-md-8">
                     <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
                         <input  {...register("name", { required: true })} placeholder="Name" />
-                        {errors.name && <span className="error">name is required</span>}
+                        {
+                        errors.name && <Fade bottom collapse>
+                            <span className="error">name is required</span>
+                        </Fade>
+                        }
 
                         <input {...register("occupation", { required: true })} placeholder=" occupation" />
                         {errors.occupation && <span className="error">occupation is required</span>}
