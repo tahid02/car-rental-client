@@ -13,7 +13,7 @@ const center_item = {
 
     
 const ManageServicesCard = ({service}) => {
-    const [loggedInUser,setLoggedInUser,isAdmin,editService,setEditService] = useContext(UserContext)
+    const [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService] = useContext(UserContext)
         const { imageURL, type, price, description,_id } = service;
 
 

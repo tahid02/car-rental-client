@@ -12,27 +12,6 @@ const AddServices = () => {
     const [imageURL, setIMageURL] = useState(null);
 
 
-    const onSubmit = data => {
-        console.log(data)
-        const serviceData = {
-
-            type: data.type,
-            price: data.price,
-            description: data.description,
-            imageURL: imageURL
-        };
-        console.log('service Data', serviceData)
-        const url = `https://evening-ocean-71187.herokuapp.com/addServices`;
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(serviceData)
-        })
-            .then(res => console.log('server side response', res))
-    };
 
     const handleImageUpload = event => {
         console.log('btn clicked ')
@@ -53,6 +32,28 @@ const AddServices = () => {
 
     }
 
+    const onSubmit = data => {
+        console.log(data)
+        const serviceData = {
+
+            type: data.type,
+            price: data.price,
+            description: data.description,
+            imageURL: imageURL
+        };
+        console.log('service Data', serviceData)
+        const url = `https://evening-ocean-71187.herokuapp.com/addServices`;
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(serviceData)
+        })
+            .then(res => console.log('server side response', res))
+            .catch(err => console.log('update error',err))
+    };
 
 
     return (

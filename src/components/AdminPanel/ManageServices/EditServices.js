@@ -7,10 +7,10 @@ import Sidebar from "../../Shared/Sidebar/Sidebar"
 const EditServices = () => {
 
     const { register, handleSubmit,  formState: { errors } } = useForm();
-    const [loggedInUser,setLoggedInUser,isAdmin,editService,setEditService] = useContext(UserContext)
+    const [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService] = useContext(UserContext)
     const { imageURL, type, price, description,_id } = editService;
     const [editImageURL, setEditIMageURL] = useState(imageURL); // you can use this in context API . so that, if you go other tab without saving edit you probably won't lost changes or edition  you have made in service
-
+console.log('editService',editService);
 
     const handleEditedImageUpload = event => {
         event.preventDefault();
@@ -38,28 +38,28 @@ const EditServices = () => {
         
         
         console.log(data)
-        // const serviceData = {
+        const serviceData = {
 
-        //     type: data.type,
-        //     price: data.price,
-        //     description: data.description,
-        //     imageURL: editImageURL
-        // };
-        // console.log('service Data', serviceData)
+            type: data.type,
+            price: data.price,
+            description: data.description,
+            imageURL: editImageURL
+        };
+        console.log('service Data', serviceData)
 
-        // fetch(`/update/${_id}`,{
-        //     method:'PATCH',
-        //     headers: {'Content-Type': 'application/json'},
-        //     body:JSON.stringify(serviceData)
-        // })
-        // .then(res => res.json())
-        // .then( result => {
-        //     // console.log('updated');
-        //     if (result) {
-        //         console.log('updated successfully')
+        fetch(`https://evening-ocean-71187.herokuapp.com/update/${_id}`,{
+            method:'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify(serviceData)
+        })
+        .then(res => res.json())
+        .then( result => {
+            console.log(result);
+            if (result) {
+                console.log('updated successfully')
             
-        //     }
-        // })
+            }
+        })
     };
 
 
@@ -73,18 +73,18 @@ const EditServices = () => {
                 <div className="col-md-4">
                     <img src={editImageURL} alt="service" className='w-25'/>
                     <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
-                        <input  {...register("type", { required: true })} placeholder="service Name" />
+                        <input defaultValue={type} {...register("type", { required: true })}  />
                         {errors.type && <span className="error">service type is required</span>}
 
-                        <input type='number' {...register("price", { required: true })} placeholder="service price" />
+                        <input defaultValue={price} type='number' {...register("price", { required: true })}  />
                         {errors.price && <span className="error">price is required</span>}
 
-                        <input {...register("description", { required: true })} placeholder="service description" />
+                        <input defaultValue={description} {...register("description", { required: true })} />
                         {errors.description && <span className="error">description is required</span>}
 
                         <input type="file" onChange={event => handleEditedImageUpload(event)} name="image" required/>
 
-                        <input type="submit" value='Edit' />
+                        <input type="submit" value=' Save Edit' />
                     </form>
                     
                     
