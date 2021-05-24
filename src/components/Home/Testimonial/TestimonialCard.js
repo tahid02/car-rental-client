@@ -4,9 +4,9 @@
 const TestimonialCard = ({description,imageURL,name,occupation}) =>{
 
     return(
-        <div className='  col-md-4 col-sm-12 col-12'>
-
-        <div className=' mt-5'>
+        // <div className='  col-md-4 col-sm-12 col-12'>
+        <div className='swiper-lazy'>
+        <div className=''>
             {description}
         </div>
         <div className='d-flex mt-5'>
@@ -22,8 +22,8 @@ const TestimonialCard = ({description,imageURL,name,occupation}) =>{
                 
             </div>
         </div>
-
-    </div>
+</div>
+    // </div>
     
     )
 }
