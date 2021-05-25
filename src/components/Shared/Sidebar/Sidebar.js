@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../../App";
 import './Sidebar.css'
 
-const Sidebar = () => {
+const Sidebar = ({show,mobile}) => {
+
+    console.log('from sidebar',show,mobile)
 
     const [loggedInUser, setLoggedInUser, isAdmin,setIsAdmin] = useContext(UserContext);
     // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -23,7 +25,7 @@ const Sidebar = () => {
     // }, [])
 
     return (
-        <div className="sidebar">
+        <div className={ ( mobile  || show && 'd-block') || (mobile || !show && 'd-none') }>
 
             <div className="panels">
 
@@ -121,7 +123,7 @@ const Sidebar = () => {
 
 
                 {
-                    isAdmin ? (<div>
+                    isAdmin ? (<div >
                         <Link to="/admin/rentList" className='link'>
                             <div ><FontAwesomeIcon icon={faGripHorizontal} /> Rent List  </div>
                         </Link>
@@ -145,7 +147,7 @@ const Sidebar = () => {
                     ) : (
 
 
-                        <div>
+                        <div >
                             <Link to="/customer/payment" className='link'>
                                 <div><FontAwesomeIcon icon={faGripHorizontal} />Payment  </div>
                             </Link>

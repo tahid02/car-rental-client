@@ -3,7 +3,6 @@
 import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react';
-import React, { useRef } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -57,15 +56,16 @@ const Testimonial = () => {
 
             <Swiper
                 style={{
-                    '--swiper-navigation-color': '#fff',
+                    '--swiper-navigation-color': '#ff0000',
                     '--swiper-pagination-color': '#000'
                 }}
                 slidesPerView={1}
                 spaceBetween={10}
-                loop={true}
+                // loop={true}
                 keyboard={{
                     "enabled": true
                 }}
+                autoHeight={true}
                 pagination={{
                     "clickable": true
                 }}

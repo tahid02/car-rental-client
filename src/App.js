@@ -13,7 +13,7 @@ import AddServices from './components/AdminPanel/AddServices/AddServices';
 import AddAdmin from './components/AdminPanel/AddAdmin/AddAdmin';
 import Payment from './components/Customer/Payment/Payment';
 import Rents from './components/Customer/Rents/Rents';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useLayoutEffect, useState } from 'react';
 import LogIn from './components/LogIn/LogIn';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Reviews from './components/Customer/Reviews/Reviews'
@@ -52,9 +52,9 @@ function App() {
 
       <Switch>
 
-      <PrivateRoute path="/payment/:id">
+      <Route path="/payment/:id">
           <Payment />
-        </PrivateRoute>
+        </Route>
 
         <PrivateRoute path="/admin/rentList" >
          <AllRents/>

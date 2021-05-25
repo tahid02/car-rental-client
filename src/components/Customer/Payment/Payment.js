@@ -1,24 +1,24 @@
 
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ProcessPayment from './ProcessPayment'
 import './payment.css'
 import { useParams } from 'react-router';
 import Sidebar from '../../Shared/Sidebar/Sidebar';
 import { UserContext } from '../../../App';
-import CustomerSidebar from '../../Shared/Sidebar/CustomerSidebar';
+import { useMediaQuery } from 'react-responsive';
 
 const Payment = () => {
-  const [loggedInUser, setLoggedInUser, isAdmin,setIsAdmin, editService, setEditService,serviceInfo, setServiceInfo ] = useContext(UserContext)
+  const [loggedInUser, setLoggedInUser, isAdmin, setIsAdmin, editService, setEditService, serviceInfo, setServiceInfo] = useContext(UserContext)
 
   const { id } = useParams()
   const { register, handleSubmit, formState: { errors } } = useForm();
-  // const loggedInUser = {
-  //   name: 'tanzim',
-  //   email: 'tanzim1463@gamil.com'
-  // }
   const [paymentData, setPaymentData] = useState(null)
+  const [show, setShow] = useState(false)
+
+
+
 
   useEffect(() => {
     fetch(`https://evening-ocean-71187.herokuapp.com/checkOut/${id}`)
@@ -27,13 +27,24 @@ const Payment = () => {
         console.log('service  data ', data)
         setServiceInfo(data);
       })
-  }, [ ])
+  }, [])
 
 
 
 
+  
+  const handleMediaQueryChange = (matches) => {
+    console.log('mobile',matches)
+    console.log('show',show)
+    setShow(!show)
+  }
+  const isTabletOrMobile  = useMediaQuery(
+    { maxWidth: 444 }, undefined,  handleMediaQueryChange
+  );
+  console.log('mobile or table size',isTabletOrMobile )
 
 
+console.log('see show',show)
 
 
 
@@ -91,14 +102,18 @@ const Payment = () => {
 
   return (
     <div className="row g-4">
+      <button onClick={()=>setShow(!show)}>
+        hey
+      </button>
       <div className='col-md-4'>
-        <Sidebar />
+        <Sidebar show={show} mobile={isTabletOrMobile}/>
       </div>
+        
 
 
 
-      <div className="col-md-8 " >
-        <div className="">
+      <div className="col-md-8 col-12" >
+    <div className="">
           <img src={serviceInfo.imageURL} alt="" />
           <h4> Car Type: {serviceInfo.type}</h4>
           <p> cost: ${serviceInfo.price}/Day </p>

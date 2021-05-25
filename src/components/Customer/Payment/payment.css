@@ -1,7 +1,10 @@
 /* .pay-form{
     margin: 30px 100px;
 } */
-
+.dashboard{
+    display:flex;
+    justify-content: center;
+}
 .pay-form input{
     display: block;
     margin-top: 30px;
@@ -12,4 +15,37 @@
 }
 .error{
     color: red ;
+}
+.sidebar{
+    position: relative;
+    /* left: -120%; */
+     /* use this left property while making sidebar navigation in mobile version to hide and show the sidebar  */
+    background-image: linear-gradient(rgb(151, 235, 235),rgb(97, 179, 179));
+    color: black;
+    height: 100vh;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+.sidebar::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* left: -20%;  */
+     /* if this is -10 then main sidebar left will be 110  for 100% hide and show  */
+    top: 0%;
+    background-image: linear-gradient(rgb(151, 235, 235),rgb(97, 179, 179));
+    z-index: -100;
+}
+
+@media screen and (max-width:400px){
+    .sideMenu{
+        left: -120%;
+    }
+}
+@media screen and (min-width:400px){
+    .sideMenu{
+       left: -20%;
+    }
 }
