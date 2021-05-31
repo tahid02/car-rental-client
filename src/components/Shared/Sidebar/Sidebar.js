@@ -25,7 +25,8 @@ const Sidebar = ({show,mobile}) => {
     // }, [])
 
     return (
-        <div className={ ( mobile  || show && 'd-block') || (mobile || !show && 'd-none') }>
+        // <div className={  ((!show || mobile ) && 'd-none')|| ( (!mobile  || show) && 'd-block') }>
+        <div className={  show ? 'd-block': 'd-none' }>
 
             <div className="panels">
 
@@ -41,12 +42,12 @@ const Sidebar = ({show,mobile}) => {
                             <div><FontAwesomeIcon icon={faGripHorizontal} />Reviews  </div>
                         </Link>
                     }    
-                        
+
 
                         <Link to="/customer/rents" className='link'>
                             <div > <FontAwesomeIcon icon={faUsers} /> Rents </div>
                         </Link>
-                   
+
 
               {
 
@@ -71,13 +72,9 @@ const Sidebar = ({show,mobile}) => {
                     </Link>
                 </div> 
 
-       
+
               } 
               </div>   */}
-
-
-
-
 
 
 
@@ -162,7 +159,7 @@ const Sidebar = ({show,mobile}) => {
                     )
                 } 
 
- 
+
 
 
 

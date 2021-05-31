@@ -8,14 +8,15 @@ import { useParams } from 'react-router';
 import Sidebar from '../../Shared/Sidebar/Sidebar';
 import { UserContext } from '../../../App';
 import { useMediaQuery } from 'react-responsive';
+import { Nav, Navbar } from 'react-bootstrap';
+
 
 const Payment = () => {
-  const [loggedInUser, setLoggedInUser, isAdmin, setIsAdmin, editService, setEditService, serviceInfo, setServiceInfo] = useContext(UserContext)
+  const [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo,show,setShow,isTabletOrMobile] = useContext(UserContext)
 
   const { id } = useParams()
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [paymentData, setPaymentData] = useState(null)
-  const [show, setShow] = useState(false)
 
 
 
@@ -31,20 +32,10 @@ const Payment = () => {
 
 
 
-
+  console.log('mobile',isTabletOrMobile)
+  console.log('show',show)
   
-  const handleMediaQueryChange = (matches) => {
-    console.log('mobile',matches)
-    console.log('show',show)
-    setShow(!show)
-  }
-  const isTabletOrMobile  = useMediaQuery(
-    { maxWidth: 444 }, undefined,  handleMediaQueryChange
-  );
-  console.log('mobile or table size',isTabletOrMobile )
-
-
-console.log('see show',show)
+  
 
 
 
@@ -102,9 +93,8 @@ console.log('see show',show)
 
   return (
     <div className="row g-4">
-      <button onClick={()=>setShow(!show)}>
-        hey
-      </button>
+     
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <div className='col-md-4'>
         <Sidebar show={show} mobile={isTabletOrMobile}/>
       </div>
@@ -113,6 +103,9 @@ console.log('see show',show)
 
 
       <div className="col-md-8 col-12" >
+      <button onClick={()=>setShow(!show)}>
+        hey
+      </button>
     <div className="">
           <img src={serviceInfo.imageURL} alt="" />
           <h4> Car Type: {serviceInfo.type}</h4>

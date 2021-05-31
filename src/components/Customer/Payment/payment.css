@@ -39,7 +39,7 @@
     z-index: -100;
 }
 
-@media screen and (max-width:400px){
+/* @media screen and (max-width:400px){
     .sideMenu{
         left: -120%;
     }
@@ -48,4 +48,4 @@
     .sideMenu{
        left: -20%;
     }
-}
+} */

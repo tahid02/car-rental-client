@@ -1,1 +1,23 @@
 
+.service_card{
+    position: relative;
+    overflow-y: hidden;
+}
+.hover_part{
+    position: absolute;
+    left: 0%;
+    bottom: 0%;/* now distance from service_card bottom to hover_card bottom is 0  */
+    height: 60%;
+    width: 100%;
+    transform: translateY(100%); /* now top of the hover_part element is in the bottom of service card element as we translated it 100%  */
+    background-color: yellow;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    opacity: .3;
+    transition: all 1s ease;
+}
+.service_card:hover .hover_part{
+    transform: translateY(0%);
+    opacity: 1;
+}
+

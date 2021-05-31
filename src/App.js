@@ -20,6 +20,7 @@ import Reviews from './components/Customer/Reviews/Reviews'
 import ManageServices from './components/AdminPanel/ManageServices/ManageServices';
 import EditServices from './components/AdminPanel/ManageServices/EditServices';
 import Profile from './components/Profile/Profile';
+import { useMediaQuery } from 'react-responsive';
 
 export const  UserContext = createContext()
 
@@ -30,6 +31,22 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [editService,setEditService] = useState({});
   const [serviceInfo, setServiceInfo] = useState({});
+  const [show, setShow] = useState(true)
+
+
+  const handleMediaQueryChange = (matches) => {
+    console.log('mobile',matches)
+    // setShow(!matches)
+    console.log('show',show)
+    
+  }
+  const isTabletOrMobile  = useMediaQuery(
+    { maxWidth: 920 }, undefined,  handleMediaQueryChange
+  );
+  console.log('mobile or table size',isTabletOrMobile )
+
+
+console.log('see show',show)
 
   useEffect(() => {
     fetch('https://evening-ocean-71187.herokuapp.com/isAdmin', {
@@ -46,13 +63,13 @@ function App() {
 
 
   return (
-    <UserContext.Provider value={ [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo] }>
+    <UserContext.Provider value={ [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo,show,setShow,isTabletOrMobile] }>
     <Router>
       <Navbar />
 
       <Switch>
 
-      <Route path="/payment/:id">
+      {/* <Route path="/payment/:id">
           <Payment />
         </Route>
 
@@ -88,7 +105,7 @@ function App() {
 
         <PrivateRoute path="/user/profile">
           <Profile />
-        </PrivateRoute>
+        </PrivateRoute> */}
 
 
 
