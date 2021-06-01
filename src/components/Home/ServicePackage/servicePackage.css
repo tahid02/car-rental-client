@@ -9,4 +9,93 @@
 
 .icon {
     font-size: 2rem;
+    padding: .8rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.icon:nth-child(1),
+.icon:nth-child(6){
+    padding: .8rem 1.1rem;
+}
+ .icon:nth-child(2){
+    padding: .8rem 1.2rem;
+}
+
+
+
+
+
+
+.icon:nth-child(1):focus,
+.icon:nth-child(1):hover {
+    background-color: #FFFF00;  
+}
+
+.icon:nth-child(2):focus,
+.icon:nth-child(2):hover{
+    background-color: #FF00FF;
+}
+.icon:nth-child(3):focus,
+.icon:nth-child(3):hover{
+    background-color: #00FFFF;
+}
+.icon:nth-child(4):focus,
+.icon:nth-child(4):hover{
+    background-color: #800000;
+}
+.icon:nth-child(5):focus,
+.icon:nth-child(5):hover{
+    background-color: #00FF00;
+}
+.icon:nth-child(6):focus,
+.icon:nth-child(6):hover{
+    background-color: #00008b;
+}
+/* 
+.animate{
+    color: yellow;
+    animation: rotating 2s infinite alternate;
+}
+@keyframes rotating{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+} */
+
+
+.packageText{
+    position: relative;
+}
+
+.big_circle{
+    position: absolute;
+    top: 30%;
+    width: 1rem;
+    height: 1rem;
+    background-color: rgba(241, 231, 229,.4);
+    border-radius: 50%;
+    animation: smallToBig 2s infinite alternate;
+}
+
+@keyframes smallToBig{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(2);
+    }
+}
+.child_circle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: .3rem;
+    width: .3rem;
+    border-radius: 50%;
 }

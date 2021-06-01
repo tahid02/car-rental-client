@@ -11,8 +11,8 @@
     width: 100%;
     transform: translateY(100%); /* now top of the hover_part element is in the bottom of service card element as we translated it 100%  */
     background-color: yellow;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     opacity: .3;
     transition: all 1s ease;
 }

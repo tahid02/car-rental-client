@@ -17,8 +17,8 @@ const OurServicesCard = ({ service }) => {
 
 
     return (
-        <div className="col-md-4 col-sm-6 col-12 " >
-            <div className="card h-100 service_card">
+        <div className="col-md-4 col-sm-6 col-12 service_card" >
+            <div className="card h-100 ">
                 <div className="centerItem w-100">
 
                     <img src={imageURL} className="card-img-top w-75 animation" alt="..." />
@@ -34,7 +34,8 @@ const OurServicesCard = ({ service }) => {
 
 
                     <div className=''>
-                        ${price}/Hour
+                        <p> {type} </p>
+                       <p>${price}/Hour</p> 
                         <Link to={isAdmin ? "/admin/rentList" : `/payment/${_id}`}>
                             <button className="btn  btn-warning bgColor" > Rent Now </button>
                         </Link>
