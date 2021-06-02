@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../../App";
 import Sidebar from "../Shared/Sidebar/Sidebar"
+import DashboardName from "../Shared/DashboardName/DashboardName"
 
 
 
@@ -13,11 +14,14 @@ const {photoURL, email, name} = loggedInUser;
     
     return (
         <div>
-            <div className="row">
-                <div className="col-md-4">
+             <div>
+                <DashboardName name = {'Profile'}/>
+            </div>
+            <div className="d-flex">
+                <div className="">
                     <Sidebar />
                 </div>
-                <div className="col-md-4">
+                <div className="">
                     <img src={photoURL} alt="user img" />
                     {name}
                     <p>

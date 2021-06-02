@@ -2,7 +2,9 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../../App";
-import Sidebar from "../../Shared/Sidebar/Sidebar"
+import Sidebar from "../../Shared/Sidebar/Sidebar";
+import DashboardName from "../../Shared/DashboardName/DashboardName";
+
 
 const EditServices = () => {
 
@@ -66,11 +68,14 @@ console.log('editService',editService);
     console.log('image',imageURL);
     return (
         <div>
-            <div className="row">
-                <div className="col-md-4">
+            <div>
+            <DashboardName name = {'Edit Service'}/>
+            </div>
+            <div className="d-flex">
+                <div className="">
                     <Sidebar />
                 </div>
-                <div className="col-md-4">
+                <div className="">
                     <img src={editImageURL} alt="service" className='w-25'/>
                     <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
                         <input defaultValue={type} {...register("type", { required: true })}  />

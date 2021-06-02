@@ -6,11 +6,14 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../../App";
 import './Sidebar.css'
 
-const Sidebar = ({show,mobile}) => {
+const Sidebar = () => {
 
-    console.log('from sidebar',show,mobile)
+    
 
-    const [loggedInUser, setLoggedInUser, isAdmin,setIsAdmin] = useContext(UserContext);
+
+    const [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo,show,setShow] = useContext(UserContext)
+    console.log('from sidebar',show)
+
     // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     // const [isAdmin, setIsAdmin] = useState(null);
 
@@ -26,7 +29,8 @@ const Sidebar = ({show,mobile}) => {
 
     return (
         // <div className={  ((!show || mobile ) && 'd-none')|| ( (!mobile  || show) && 'd-block') }>
-        <div className={  show ? 'd-block': 'd-none' }>
+        
+         <div className={show ? 'd-block mx-5 mb-3' : 'd-none' }  > 
 
             <div className="panels">
 
@@ -139,6 +143,7 @@ const Sidebar = ({show,mobile}) => {
                         <Link to="/admin/manageServices" className='link'>
                             <div  > <FontAwesomeIcon icon={faUsers} /> Manage your Services  </div>
                         </Link>
+                        
                     </div>
 
                     ) : (
@@ -148,13 +153,17 @@ const Sidebar = ({show,mobile}) => {
                             <Link to="/customer/payment" className='link'>
                                 <div><FontAwesomeIcon icon={faGripHorizontal} />Payment  </div>
                             </Link>
-                            <Link to="/customer/reviews" className='link'>
-                                <div><FontAwesomeIcon icon={faGripHorizontal} />Reviews  </div>
-                            </Link>
+                            <Link to="/customer/reviews" className='link'> 
+                            <div><FontAwesomeIcon icon={faGripHorizontal}/> Reviews  </div>
+                            </Link> 
+                                
 
                             <Link to="/customer/rents" className='link'>
                                 <div > <FontAwesomeIcon icon={faUsers} /> Rents </div>
                             </Link>
+                            
+                
+            
                         </div>
                     )
                 } 
@@ -170,9 +179,7 @@ const Sidebar = ({show,mobile}) => {
 
             </div>
             <Link to="/" className='link signOut'>
-                <div>
-                    <FontAwesomeIcon icon={faSignOutAlt} /> Sign Out
-                </div>
+                 <div><FontAwesomeIcon icon={faSignOutAlt} /> Sign Out</div>
             </Link>
         </div>
     );

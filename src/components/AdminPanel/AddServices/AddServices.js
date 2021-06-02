@@ -1,9 +1,9 @@
-import AdminSidebar from "../AdminSidebar/AdminSidebar";
-// import '../../Customer/CustomerSidebar/CustomerSidebar.css'
+
 import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
+import DashboardName from "../../Shared/DashboardName/DashboardName";
 
 const AddServices = () => {
 
@@ -58,6 +58,9 @@ const AddServices = () => {
 
     return (
         <section className="container-fluid">
+            <div>
+                <DashboardName name = {'Add Admin'}/>
+            </div>
             <div className="row">
                 <div className="col-md-4">
                     <Sidebar />

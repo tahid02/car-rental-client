@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../App';
 import Sidebar from '../../Shared/Sidebar/Sidebar';
 import ManageServicesCard from './ManageServiceCard';
+import DashboardName from "../../Shared/DashboardName/DashboardName";
+
 
 const ManageServices = () => {
 
@@ -19,14 +21,16 @@ const ManageServices = () => {
     return (
         <div className=''>
 
-            <h5 className='my-3'>Manage Product </h5>
+            <div>
+                <DashboardName name = {'Manage Services'}/>
+            </div>
 
 
-            <div className="row g-3">
-                <div className="col-md-4">
+            <div className="d-flex">
+                <div className="">
                     <Sidebar />
                 </div>
-                <div className="col-md-7">
+                <div className="">
                     <table className="table table-hover text-start">
                         <thead>
                             <tr>

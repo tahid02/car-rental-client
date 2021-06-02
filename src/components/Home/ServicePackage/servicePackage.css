@@ -8,19 +8,14 @@
 }
 
 .icon {
-    font-size: 2rem;
-    padding: .8rem;
+    /* color:rgb(0, 255, 255); */
+    height: 5rem;
+    width: 5rem;
     border-radius: 50%;
     cursor: pointer;
 }
-
-
-.icon:nth-child(1),
-.icon:nth-child(6){
-    padding: .8rem 1.1rem;
-}
- .icon:nth-child(2){
-    padding: .8rem 1.2rem;
+.carIcon{
+    font-size: 2rem;
 }
 
 

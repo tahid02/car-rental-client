@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
 import AllRentsCard from "./AllRentsCard";
+import DashboardName from "../../Shared/DashboardName/DashboardName";
 
 
 const AllRents = () => {
@@ -45,11 +46,15 @@ const AllRents = () => {
     console.log('all rents',allRents)
     return (
         <section className="container-fluid">
-        <div className="row">
-            <div className="col-md-4">
+            
+        <div>
+        <DashboardName name = {'All Rents'}/>
+        </div>
+        <div className="d-flex">
+            <div className="">
                 <Sidebar />
             </div>
-            <div className="col-md-8">
+            <div className="">
             {
                     allRents.map(rent => <AllRentsCard {...rent} />)
                 }

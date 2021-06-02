@@ -20,30 +20,30 @@ import Reviews from './components/Customer/Reviews/Reviews'
 import ManageServices from './components/AdminPanel/ManageServices/ManageServices';
 import EditServices from './components/AdminPanel/ManageServices/EditServices';
 import Profile from './components/Profile/Profile';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 
 export const  UserContext = createContext()
 
 function App() {
 
 
-  const [loggedInUser,setLoggedInUser] = useState({success: false} )
+  const [loggedInUser,setLoggedInUser] = useState(false )
   const [isAdmin, setIsAdmin] = useState(false);
   const [editService,setEditService] = useState({});
   const [serviceInfo, setServiceInfo] = useState({});
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
 
 
-  const handleMediaQueryChange = (matches) => {
-    console.log('mobile',matches)
-    // setShow(!matches)
-    console.log('show',show)
+  // const handleMediaQueryChange = (matches) => {
+  //   console.log('mobile',matches)
+  //   // setShow(!matches)
+  //   console.log('show',show)
     
-  }
-  const isTabletOrMobile  = useMediaQuery(
-    { maxWidth: 920 }, undefined,  handleMediaQueryChange
-  );
-  console.log('mobile or table size',isTabletOrMobile )
+  // }
+  // const isTabletOrMobile  = useMediaQuery(
+  //   { maxWidth: 920 }, undefined,  handleMediaQueryChange
+  // );
+  // console.log('mobile or table size',isTabletOrMobile )
 
 
 console.log('see show',show)
@@ -63,15 +63,15 @@ console.log('see show',show)
 
 
   return (
-    <UserContext.Provider value={ [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo,show,setShow,isTabletOrMobile] }>
+    <UserContext.Provider value={ [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo,show,setShow] }>
     <Router>
       <Navbar />
 
       <Switch>
 
-      {/* <Route path="/payment/:id">
+      <PrivateRoute path="/payment/:id">
           <Payment />
-        </Route>
+        </PrivateRoute>
 
         <PrivateRoute path="/admin/rentList" >
          <AllRents/>
@@ -105,7 +105,7 @@ console.log('see show',show)
 
         <PrivateRoute path="/user/profile">
           <Profile />
-        </PrivateRoute> */}
+        </PrivateRoute>
 
 
 

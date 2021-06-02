@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
-import AdminSidebar from "../../Shared/Sidebar/AdminSidebar";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
-// import '../../Customer/CustomerSidebar/CustomerSidebar'
+import DashboardName from "../../Shared/DashboardName/DashboardName";
 
 
 const AddAdmin = () => {
@@ -27,11 +26,14 @@ const AddAdmin = () => {
 
     return (
         <section className="container-fluid">
-            <div className="row">
-                <div className="col-md-4">
+            <div>
+                <DashboardName name = {'Add Admin'}/>
+            </div>
+            <div className="d-flex">
+                <div className="">
                     <Sidebar />
                 </div>
-                <div className="col-md-8">
+                <div className="">
                     <form className="" onSubmit={handleSubmit(onSubmit)}>
 
                         <input {...register("email", { required: true })} placeholder="Your Email" className='d-block w-50'/>

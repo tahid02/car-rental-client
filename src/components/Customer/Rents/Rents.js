@@ -4,13 +4,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../../App';
 import Sidebar from '../../Shared/Sidebar/Sidebar';
+import DashboardName from '../../Shared/DashboardName/DashboardName';
 import RentsCard from './RentsCard';
 
 const Rents = () => {
 
     const [loggedInUser] = useContext(UserContext)
-
-
     const [userRents, setUserRents] = useState([])
 
 
@@ -30,13 +29,17 @@ const Rents = () => {
     console.log('userRents', userRents)
     return (
         <div className='mt-3'>
-            <h4 className='text-center'> Rents </h4>
-            <div className="row g-3">
-                <div className="col-md-4">
-                    <Sidebar />
-                </div>
-                <div className="col-md-8">
-                    
+            <div>
+                <DashboardName name = {'payment'}/>
+            </div>
+            <div className="d-flex">
+
+            <div className=' ' style={{height:'100vh'}}>
+                <Sidebar />
+            </div>
+
+                <div className="">
+                
                         {
                             userRents.map(rent => <RentsCard {...rent} />)
                         }

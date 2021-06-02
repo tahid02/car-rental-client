@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
+import DashboardName from "../../Shared/DashboardName/DashboardName";
 import Fade from 'react-reveal/Fade';
 
 const Reviews = () => {
@@ -56,11 +57,15 @@ const Reviews = () => {
 
     return (
         <section className="container-fluid">
-            <div className="row">
-                <div className="col-md-4">
+             <div>
+               <DashboardName name={'Reviews'} />
+            </div>
+            <div className="d-flex">
+                <div className="">
                     <Sidebar />
                 </div>
-                <div className="col-md-8">
+                <div className="">
+                    
                     <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
                         <input  {...register("name", { required: true })} placeholder="Name" />
                         {

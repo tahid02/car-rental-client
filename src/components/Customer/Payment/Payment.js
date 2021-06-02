@@ -6,14 +6,13 @@ import ProcessPayment from './ProcessPayment'
 import './payment.css'
 import { useParams } from 'react-router';
 import Sidebar from '../../Shared/Sidebar/Sidebar';
+import DashboardName from '../../Shared/DashboardName/DashboardName';
 import { UserContext } from '../../../App';
-import { useMediaQuery } from 'react-responsive';
 import { Nav, Navbar } from 'react-bootstrap';
 
 
 const Payment = () => {
-  const [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo,show,setShow,isTabletOrMobile] = useContext(UserContext)
-
+  const [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo,show,setShow] = useContext(UserContext)
   const { id } = useParams()
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [paymentData, setPaymentData] = useState(null)
@@ -32,7 +31,6 @@ const Payment = () => {
 
 
 
-  console.log('mobile',isTabletOrMobile)
   console.log('show',show)
   
   
@@ -88,31 +86,35 @@ const Payment = () => {
 
 
 
-
-
-
+  
+  
   return (
-    <div className="row g-4">
+    <div className=''>
      
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <div className='col-md-4'>
-        <Sidebar show={show} mobile={isTabletOrMobile}/>
+     <div>
+        <DashboardName name = {'payment'}/>
+      </div>
+
+      <div className='d-flex '>
+   
+      <div className=' ' style={{height:'100vh'}}>
+        <Sidebar  />        
       </div>
         
 
 
 
-      <div className="col-md-8 col-12" >
-      <button onClick={()=>setShow(!show)}>
-        hey
-      </button>
-    <div className="">
-          <img src={serviceInfo.imageURL} alt="" />
-          <h4> Car Type: {serviceInfo.type}</h4>
-          <p> cost: ${serviceInfo.price}/Day </p>
-        </div>
+      <div className=' ' >
+       
+      
+          
+          <div className="">
+              <img src={serviceInfo.imageURL} alt="" className='img-fluid'/>
+              <h4> Car Type: {serviceInfo.type}</h4>
+              <p> cost: ${serviceInfo.price}/Day </p>
+          </div>
 
-        <div className="row">
+        <div className="row g-5">
 
           <div className="col-md-6" >
             <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
@@ -133,13 +135,14 @@ const Payment = () => {
           </div>
 
 
-          <div className="col-md-6" >
-            <h2>Pay Here   </h2>
-            <ProcessPayment handlePayment={handlePaymentSuccess} />
+          <div className="col-md-6">
+            <h2>Pay Here </h2>
+            <ProcessPayment handlePayment={handlePaymentSuccess} paymentData={paymentData}/>
           </div>
 
         </div>
 
+      </div>
       </div>
     </div>
   );
