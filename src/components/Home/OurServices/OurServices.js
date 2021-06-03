@@ -16,7 +16,7 @@ const OurServices = () => {
         })
     },[])
     return (
-        <section className=" bgColor " style={{ marginTop: '-4%' }}>
+        <section className=" bgColor " id="services" style={{ marginTop: '-4%' }}>
 
             <section className="container-fluid">
 

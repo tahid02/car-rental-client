@@ -75,6 +75,7 @@ console.log('editService',editService);
                 <div className="">
                     <Sidebar />
                 </div>
+                
                 <div className="">
                     <img src={editImageURL} alt="service" className='w-25'/>
                     <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>

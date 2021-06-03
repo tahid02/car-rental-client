@@ -89,22 +89,22 @@ const Payment = () => {
   
   
   return (
-    <div className=''>
+    <div className='container-fluid payment_section'>
      
      <div>
         <DashboardName name = {'payment'}/>
       </div>
 
-      <div className='d-flex '>
+      <div className='d-flex centering' style={{overflowX:'scroll'}}>
    
-      <div className=' ' style={{height:'100vh'}}>
-        <Sidebar  />        
-      </div>
+        <div className=' ' style={{height:'100vh'}}>
+          <Sidebar  />        
+        </div>
         
 
 
 
-      <div className=' ' >
+      <div className='' >
        
       
           
@@ -114,10 +114,10 @@ const Payment = () => {
               <p> cost: ${serviceInfo.price}/Day </p>
           </div>
 
-        <div className="row g-5">
+        <div className="row g-5 ">
 
-          <div className="col-md-6" >
-            <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="col-md-6 " >
+            <form className="pay-form " onSubmit={handleSubmit(onSubmit)}>
               <input defaultValue={loggedInUser.name} {...register("name", { required: true })} placeholder="Your Name" />
               {errors.name && <span className="error">Name is required</span>}
 

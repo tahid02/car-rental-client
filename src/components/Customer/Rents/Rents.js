@@ -32,7 +32,7 @@ const Rents = () => {
             <div>
                 <DashboardName name = {'payment'}/>
             </div>
-            <div className="d-flex">
+            <div className="d-flex centering">
 
             <div className=' ' style={{height:'100vh'}}>
                 <Sidebar />

@@ -34,7 +34,7 @@ const Testimonial = () => {
             })
     }, [])
     return (
-        <section className="container my-5">
+        <section className="container my-5" id="testimonial">
             <div className='d-flex align-items-center'>
                 <div className="">
                     <h6 className="cyan">Testimonials </h6>

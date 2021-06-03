@@ -61,11 +61,11 @@ const AddServices = () => {
             <div>
                 <DashboardName name = {'Add Admin'}/>
             </div>
-            <div className="row">
-                <div className="col-md-4">
+            <div className="d-flex">
+                <div className="">
                     <Sidebar />
                 </div>
-                <div className="col-md-8">
+                <div className="">
                     <form className="pay-form" onSubmit={handleSubmit(onSubmit)}>
                         <input  {...register("type", { required: true })} placeholder="service Name" />
                         {errors.type && <span className="error">service type is required</span>}

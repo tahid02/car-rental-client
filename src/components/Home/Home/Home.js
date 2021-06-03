@@ -1,4 +1,5 @@
 import Footer from "../../Shared/Footer/Footer"
+import Navigationbar from "../../Shared/Navbar/Navbar";
 import Banner from "../Banner/Banner"
 import OurServices from "../OurServices/OurServices"
 import ServicePackage from "../ServicePackage/ServicePackage";
@@ -8,6 +9,7 @@ import WhyUs from "../WhyUs/WhyUs"
 const Home = () => {
     return (
         <main className="">
+            <Navigationbar />
             <Banner />
             <OurServices />
             <WhyUs />

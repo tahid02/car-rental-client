@@ -1,6 +1,6 @@
 import './App.css';
 import Home from './components/Home/Home/Home';
-import Navbar from './components/Shared/Navbar/Navbar';
+import Navigationbar from './components/Shared/Navbar/Navbar';
 
 import {
   BrowserRouter as Router,
@@ -65,13 +65,13 @@ console.log('see show',show)
   return (
     <UserContext.Provider value={ [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin,editService,setEditService,serviceInfo, setServiceInfo,show,setShow] }>
     <Router>
-      <Navbar />
+      
 
       <Switch>
 
-      <PrivateRoute path="/payment/:id">
+      <Route path="/payment/:id">
           <Payment />
-        </PrivateRoute>
+        </Route>
 
         <PrivateRoute path="/admin/rentList" >
          <AllRents/>
